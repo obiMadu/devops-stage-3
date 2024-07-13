@@ -1,7 +1,3 @@
-Certainly! Here is a GitHub README for your project:
-
----
-
 # Messaging System with RabbitMQ, Celery, and Flask
 
 This project demonstrates how to deploy a Python application behind Nginx that interacts with RabbitMQ and Celery for email sending and logging functionality.
@@ -136,7 +132,3 @@ You can test the application using `curl` or any HTTP client:
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-Feel free to customize the README to better suit your project's specifics and needs.
