@@ -1,26 +1,12 @@
 from flask import Flask, request, jsonify
 from tasks import send_email_task, log_time_task
 import logging
-import os
+from logging_config import log_store  # Import log_store to access in-memory logs
 
 app = Flask(__name__)
 
-# Set up logging
-log_file = './messaging_system.log'
-logging.basicConfig(filename=log_file, level=logging.INFO, 
-                    format='%(asctime)s %(levelname)s %(message)s')
-
-# Create an in-memory log store
-log_store = []
-
-class InMemoryHandler(logging.Handler):
-    def emit(self, record):
-        log_store.append(self.format(record))
-
-# Add the in-memory handler to the logger
-in_memory_handler = InMemoryHandler()
-in_memory_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'))
-logging.getLogger().addHandler(in_memory_handler)
+# Import the logging configuration
+import logging_config
 
 @app.route('/')
 def index():
