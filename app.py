@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 # Set up logging
-log_file = '/var/log/messaging_system.log'
+log_file = './messaging_system.log'
 logging.basicConfig(filename=log_file, level=logging.INFO, 
                     format='%(asctime)s %(levelname)s %(message)s')
 
