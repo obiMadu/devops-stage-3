@@ -31,6 +31,7 @@ def log_time_task():
     try:
         with open('/var/log/messaging_system.log', 'a') as log_file:
             log_file.write(f"{current_time}\n")
-        logging.info(f"Logged current time: {current_time}")
+        logging.info(f"Current time: {current_time}\n")
+        logging.info(f"Logged current time: {current_time} \n")
     except Exception as e:
         logging.error(f"Failed to log time: {e}")
