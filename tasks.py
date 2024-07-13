@@ -8,6 +8,11 @@ import logging
 # Import the logging configuration
 import logging_config
 
+# Explicitly configure logging for Celery tasks
+logger = logging.getLogger()
+logger.addHandler(logging_config.in_memory_handler)
+logger.setLevel(logging.INFO)
+
 # create a celery worker
 celery = Celery('tasks', broker='redis://localhost:6379/0')
 
@@ -21,6 +26,7 @@ def send_email_task(email):
         msg['To'] = email
 
         with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+            server.starttls()
             server.login(SMTP_USERNAME, SMTP_PASSWORD)
             server.sendmail(SMTP_USERNAME, [email], msg.as_string())
         logging.info(f"Email sent to {email} \n")
